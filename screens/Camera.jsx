@@ -5,12 +5,10 @@ import { Avatar } from "react-native-paper";
 import { colors, defaultStyle } from "../styles/styles";
 import * as ImagePicker from "expo-image-picker";
 
-// when I use camera in mobile in this project I am getting this error "WARN  Key "cancelled" in the image picker result is deprecated and will be removed in SDK 48, use "canceled" instead" how do I solve this?
 const CameraComponent = ({ navigation, route }) => {
   const [hasPermission, setHasPermission] = useState(null);
   const [type, setType] = useState(CameraType.back);
   const [camera, setCamera] = useState(null);
-  //   console.log(route.params);
 
   const openImagePicker = async () => {
     const permissionResult =
@@ -19,11 +17,7 @@ const CameraComponent = ({ navigation, route }) => {
     if (permissionResult.granted === false)
       return alert("Permission to access gallery is required ");
 
-    const data = await ImagePicker.launchImageLibraryAsync({
-      allowsEditing: true,
-      aspect: [1, 1],
-      quality: 1,
-    });
+    const data = await ImagePicker.launchImageLibraryAsync();
 
     console.log(data);
     if (route.params?.newProduct)

@@ -42,3 +42,5 @@ const Chart = ({ inStock = 0, outOfStock = 0 }) => {
 };
 
 export default Chart;
+
+// how to change the pie circle color in react native chart kit

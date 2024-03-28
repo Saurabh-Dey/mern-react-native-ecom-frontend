@@ -1,6 +1,6 @@
-// why I am getting cannot read property 'id' of undefined?
+// why I am getting cannot read property 'toString' of undefined? solve it for me
 import { View, Text, ScrollView } from "react-native";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   defaultStyle,
   formHeading,
@@ -12,39 +12,56 @@ import Header from "../../components/Header";
 import Loader from "../../components/Loader";
 import { Button, TextInput } from "react-native-paper";
 import SelectComponent from "../../components/SelectComponent";
+import { useMessageAndErrorOther, useSetCategories } from "../../utils/hooks";
+import { useIsFocused } from "@react-navigation/native";
+import { useDispatch, useSelector } from "react-redux";
+import { getProductDetails } from "../../redux/actions/productAction";
+import { updateProduct } from "../../redux/actions/otherAction";
 
 const UpdateProduct = ({ navigation, route }) => {
-  const loading = false;
-  const loadingOther = false;
+  const isFocused = useIsFocused();
+  const dispatch = useDispatch();
+  const [visible, setVisible] = useState(false);
 
-  const images = [
-    {
-      url: "https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/378687/01/sv01/fnd/IND/fmt/png/PWR-NITRO%E2%84%A2-SQD-Men's-Training-Shoes",
-      _id: "dwhdihwidhwio",
-    },
-    {
-      url: "https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/378687/01/sv01/fnd/IND/fmt/png/PWR-NITRO%E2%84%A2-SQD-Men's-Training-Shoes",
-      _id: "abdbq56000371456bcq",
-    },
-  ];
-
+  const { product, loading } = useSelector((state) => state.product);
+  // console.log(product);
   const [id] = useState(route.params.id);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [stock, setStock] = useState("");
-  const [category, setCategory] = useState("Laptop");
+  const [category, setCategory] = useState("");
   const [categoryID, setCategoryID] = useState("");
-  const [categories, setCategories] = useState([
-    { _id: "sadads", category: "Laptop" },
-    { _id: "sadsdsadsa", category: "Footwear" },
-    { _id: "sa42dfsddads", category: "Cloths" },
-  ]);
-  const [visible, setVisible] = useState(false);
+  const [categories, setCategories] = useState([]);
+  useSetCategories(setCategories, isFocused);
 
   const submitHandler = () => {
-    console.log(name, description, price, stock, categoryID);
+    dispatch(updateProduct(id, name, description, price, stock, categoryID));
   };
+
+  const loadingOther = useMessageAndErrorOther(
+    dispatch,
+    navigation,
+    "adminpanel"
+  );
+
+  useEffect(() => {
+    dispatch(getProductDetails(id));
+    // console.log("Fetch");
+  }, [dispatch, id, isFocused]);
+
+  useEffect(() => {
+    if (product) {
+      // console.log("exist");
+      setName(product.name);
+      setDescription(product.description);
+      setPrice(String(product.price));
+      setStock(String(product.stock));
+      setCategory(product.category?.category);
+      setCategoryID(product.category?._id);
+    }
+  }, [product]);
+
   return (
     <>
       <View
@@ -82,7 +99,7 @@ const UpdateProduct = ({ navigation, route }) => {
                 onPress={() =>
                   navigation.navigate("productimages", {
                     id,
-                    images,
+                    images: product.images,
                   })
                 }
                 textColor={colors.greenTint}

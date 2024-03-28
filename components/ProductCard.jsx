@@ -40,7 +40,7 @@ const ProductCard = ({
             resizeMode: "contain",
             position: "absolute",
             left: 0,
-            top: 90,
+            top: 100,
           }}
         />
 

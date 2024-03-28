@@ -13,6 +13,7 @@ import { getAllProducts } from "../redux/actions/productAction";
 import { useSetCategories } from "../utils/hooks";
 import Toast from "react-native-toast-message";
 
+// I am getting blank product array but why?? please correct this
 const Home = () => {
   const [category, setCategory] = useState("");
   const [activeSearch, setActiveSearch] = useState(false);
@@ -24,6 +25,7 @@ const Home = () => {
   const isFocused = useIsFocused();
 
   const { products } = useSelector((state) => state.product);
+  console.log("hello *****************########            ", products);
 
   const categoryButtonHandler = (id) => {
     setCategory(id);
