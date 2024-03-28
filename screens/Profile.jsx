@@ -22,9 +22,7 @@ import { updatePic } from "../redux/actions/otherAction";
 
 const Profile = ({ navigation, route }) => {
   const { user } = useSelector((state) => state.user);
-  const [avatar, setAvatar] = useState(
-    user?.avatar ? user.avatar.url : defaultImg
-  );
+  const [avatar, setAvatar] = useState(defaultImg);
 
   const dispatch = useDispatch();
   const isFocused = useIsFocused();
@@ -75,6 +73,12 @@ const Profile = ({ navigation, route }) => {
     }
     dispatch(loadUser());
   }, [route.params, dispatch, isFocused]);
+
+  useEffect(() => {
+    if (user?.avatar) {
+      setAvatar(user.avatar.url);
+    }
+  }, [user]);
 
   return (
     <>

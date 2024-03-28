@@ -35,6 +35,15 @@ export const otherReducer = createReducer({}, (builder) => {
     .addCase("deleteProductImageRequest", (state) => {
       state.loading = true;
     })
+    .addCase("deleteProductRequest", (state) => {
+      state.loading = true;
+    })
+    .addCase("forgetPasswordRequest", (state) => {
+      state.loading = true;
+    })
+    .addCase("resetPasswordRequest", (state) => {
+      state.loading = true;
+    })
     .addCase("updatePasswordSuccess", (state, action) => {
       state.loading = false;
       state.message = action.payload;
@@ -79,6 +88,18 @@ export const otherReducer = createReducer({}, (builder) => {
       state.loading = false;
       state.message = action.payload;
     })
+    .addCase("deleteProductSuccess", (state, action) => {
+      state.loading = false;
+      state.message = action.payload;
+    })
+    .addCase("forgetPasswordSuccess", (state, action) => {
+      state.loading = false;
+      state.message = action.payload;
+    })
+    .addCase("resetPasswordSuccess", (state, action) => {
+      state.loading = false;
+      state.message = action.payload;
+    })
     .addCase("updatePasswordFail", (state, action) => {
       state.loading = false;
       state.error = action.payload;
@@ -120,6 +141,18 @@ export const otherReducer = createReducer({}, (builder) => {
       state.error = action.payload;
     })
     .addCase("deleteProductImageFail", (state) => {
+      state.loading = false;
+      state.error = action.payload;
+    })
+    .addCase("deleteProductFail", (state) => {
+      state.loading = false;
+      state.error = action.payload;
+    })
+    .addCase("forgetPasswordFail", (state) => {
+      state.loading = false;
+      state.error = action.payload;
+    })
+    .addCase("resetPasswordFail", (state) => {
       state.loading = false;
       state.error = action.payload;
     });

@@ -304,7 +304,6 @@ export const updateProduct =
       dispatch({
         type: "updateProductRequest",
       });
-      // console.log("working 1");
 
       const { data } = await axios.put(
         `${server}/product/single/${id}`,
@@ -322,12 +321,11 @@ export const updateProduct =
           withCredentials: true,
         }
       );
-      // console.log("working 2");
+
       dispatch({
         type: "updateProductSuccess",
         payload: data.message,
       });
-      // console.log("working 3");
     } catch (error) {
       console.log("error working");
       console.log(error);
@@ -387,6 +385,101 @@ export const deleteProductImage = (productId, imageId) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: "deleteProductImageFail",
+      payload: error.response.data.message,
+    });
+  }
+};
+
+export const deleteProduct = (productId) => async (dispatch) => {
+  try {
+    dispatch({
+      type: "deleteProductRequest",
+    });
+
+    const { data } = await axios.delete(
+      `${server}/product/single/${productId}`,
+      {
+        withCredentials: true,
+      }
+    );
+
+    dispatch({
+      type: "deleteProductSuccess",
+      payload: data.message,
+    });
+  } catch (error) {
+    dispatch({
+      type: "deleteProductFail",
+      payload: error.response.data.message,
+    });
+  }
+};
+
+export const forgetPassword = (email) => async (dispatch) => {
+  try {
+    dispatch({
+      type: "forgetPasswordRequest",
+    });
+    // console.log("working 1");
+
+    const { data } = await axios.post(
+      `${server}/user/forgetpassword`,
+      {
+        email,
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        withCredentials: true,
+      }
+    );
+    // console.log("working 2");
+    dispatch({
+      type: "forgetPasswordSuccess",
+      payload: data.message,
+    });
+    // console.log("working 3");
+  } catch (error) {
+    console.log("error working");
+    console.log(error);
+    dispatch({
+      type: "forgetPasswordFail",
+      payload: error.response.data.message,
+    });
+  }
+};
+export const resetPassword = (otp, password) => async (dispatch) => {
+  try {
+    dispatch({
+      type: "resetPasswordRequest",
+    });
+    // console.log("working 1");
+
+    const { data } = await axios.put(
+      `${server}/user/forgetpassword`,
+      {
+        otp,
+        password,
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        withCredentials: true,
+      }
+    );
+    // console.log("working 2");
+    dispatch({
+      type: "resetPasswordSuccess",
+      payload: data.message,
+    });
+    // console.log("working 3");
+  } catch (error) {
+    console.log("error working");
+    console.log(error);
+    dispatch({
+      type: "resetPasswordFail",
       payload: error.response.data.message,
     });
   }

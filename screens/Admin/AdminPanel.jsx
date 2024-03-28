@@ -9,9 +9,12 @@ import ProductListHeading from "../../components/ProductListHeading";
 import ProductListItem from "../../components/ProductListItem";
 import Chart from "../../components/Chart";
 
-import { useAdminProducts } from "../../utils/hooks";
+import { useAdminProducts, useMessageAndErrorOther } from "../../utils/hooks";
 import { useDispatch } from "react-redux";
 import { useIsFocused } from "@react-navigation/native";
+
+import { deleteProduct } from "../../redux/actions/otherAction";
+import { getAdminProducts } from "../../redux/actions/productAction";
 
 const AdminPanel = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -39,8 +42,16 @@ const AdminPanel = ({ navigation }) => {
     }
   };
   const deleteProductHandler = (id) => {
-    console.log(`Deleting Product with ID: ${id}`);
+    // console.log(`Deleting Product with ID: ${id}`);
+    dispatch(deleteProduct(id));
   };
+
+  const loadingDelete = useMessageAndErrorOther(
+    dispatch,
+    null,
+    null,
+    getAdminProducts
+  );
   return (
     <View style={defaultStyle}>
       <Header back={true} />
@@ -95,20 +106,21 @@ const AdminPanel = ({ navigation }) => {
 
           <ScrollView showsVerticalScrollIndicator={false}>
             <View>
-              {products.map((item, index) => (
-                <ProductListItem
-                  navigate={navigation}
-                  deleteHandler={deleteProductHandler}
-                  key={item._id}
-                  id={item._id}
-                  i={index}
-                  price={item.price}
-                  stock={item.stock}
-                  name={item.name}
-                  category={item.category?.category}
-                  imgSrc={item.images[0].url}
-                />
-              ))}
+              {!loadingDelete &&
+                products.map((item, index) => (
+                  <ProductListItem
+                    navigate={navigation}
+                    deleteHandler={deleteProductHandler}
+                    key={item._id}
+                    id={item._id}
+                    i={index}
+                    price={item.price}
+                    stock={item.stock}
+                    name={item.name}
+                    category={item.category?.category}
+                    imgSrc={item.images[0].url}
+                  />
+                ))}
             </View>
           </ScrollView>
         </>
