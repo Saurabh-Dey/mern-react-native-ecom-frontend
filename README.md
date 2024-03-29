@@ -1,4 +1,4 @@
-# E-Commerce App
+# MERN E-Commerce App
 
 ## Project Description
 
