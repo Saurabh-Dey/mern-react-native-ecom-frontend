@@ -61,7 +61,7 @@ Remember to check the README.md file in the GitHub repository for any specific i
 
 Essential Variables      PORT = DB_URI = STRIPE_API_KEY= STRIPE_SECRET_KEY= JWT_SECRET= JWT_EXPIRE= COOKIE_EXPIRE= SMPT_SERVICE = SMPT_MAIL= SMPT_PASSWORD= SMPT_HOST= SMPT_PORT= CLOUDINARY_NAME = CLOUDINARY_API_KEY = CLOUDINARY_API_SECRET fill each filed with your info respectively
 
-![App Snap Shots]
+## Some Snapshots
 <img src="https://github.com/Saurabh-Dey/mern-react-native-ecom-frontend/blob/master/appScreenShots/homeScreen.png" width="300" height="600">
 
 
