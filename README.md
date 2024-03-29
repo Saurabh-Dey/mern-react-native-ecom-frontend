@@ -36,6 +36,7 @@ quick overview of their inventory and helping to make informed decisions.
 - Node.js
 - React Native CLI
 - iOS or Android development environment setup
+- Stripe for Payment Integration
 - mongoDB
 - React
 
@@ -43,7 +44,7 @@ quick overview of their inventory and helping to make informed decisions.
 
 1. Clone the repository:
    ```sh
-   git clone https://github.com/Saurabh-Dey/mern-react-native-ecom-server.git   
+   git clone https://github.com/Saurabh-Dey/mern-react-native-ecom-frontend.git   
 2. Navigate to the Repository Directory Change into the directory that was created by the clone command:
    ```sh
    cd your-repository-directory
@@ -53,9 +54,7 @@ quick overview of their inventory and helping to make informed decisions.
 4. Start the Node Server If the repository has a start script defined in the package.json, you can start the server using:
    ```sh
    npm start
-5. Otherwise, you may need to run the server file directly with Node. For example:
-   ```sh
-   node server.js
+
 Remember to check the README.md file in the GitHub repository for any specific instructions related to the project you’re running. Also, ensure that you have Node.js and npm installed on your machine before executing these commands
 
 ### Make Sure to Create a config.env file in backend/config directory and add appropriate variables in order to use the app.
@@ -71,7 +70,6 @@ I'm passionate about building and contributing to the web ecosystem with the MER
 - 🔭 I’m currently working on web applications using **MongoDB**, **Express.js**, **React**, and **Node.js**.
 - 🌱 I’m currently learning about **TypeScript** and **WebRTC**.
 - 👯 I’m looking to collaborate on **open-source projects** and **innovative web solutions**.
-- 🤔 I’m looking for help with **understanding complex algorithms** and **system design**.
-- 💬 Ask me about anything related to **JavaScript**, **React Native**, and **building REST APIs**.
+- 💬 Ask me about anything related to **JavaScript**, **React**, and **building REST APIs**.
 - ⚡ Fun fact: I love to explore new technologies and contribute to developer communities!
 
