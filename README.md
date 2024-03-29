@@ -31,12 +31,13 @@ quick overview of their inventory and helping to make informed decisions.
 
 
 
-## Prerequisites
+## Technologies and Tools
 
 - Node.js
 - React Native CLI
 - iOS or Android development environment setup
 - Stripe for Payment Integration
+- nodemailer for SMTP mail
 - mongoDB
 - React
 
