@@ -63,6 +63,7 @@ Essential Variables      PORT = DB_URI = STRIPE_API_KEY= STRIPE_SECRET_KEY= JWT_
 
 ## Some Snapshots
 <img src="https://github.com/Saurabh-Dey/mern-react-native-ecom-frontend/blob/master/appScreenShots/homeScreen.png" width="300" height="600">
+<img src="https://github.com/Saurabh-Dey/mern-react-native-ecom-frontend/blob/master/appScreenShots/adminpanel.png" width="300" height="600">
 
 
 
